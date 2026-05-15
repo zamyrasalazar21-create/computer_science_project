@@ -1,7 +1,4 @@
--- setup.sql — Run this once using Render's PostgreSQL console
--- Go to: Render Dashboard → your DB → "Query" tab → paste and run this
 
--- Users table
 CREATE TABLE IF NOT EXISTS users (
     id       SERIAL PRIMARY KEY,
     username VARCHAR(50)  NOT NULL UNIQUE,
@@ -9,7 +6,6 @@ CREATE TABLE IF NOT EXISTS users (
     role     VARCHAR(10)  NOT NULL DEFAULT 'judge' CHECK (role IN ('judge', 'admin'))
 );
 
--- Scores table
 CREATE TABLE IF NOT EXISTS scores (
     id             SERIAL PRIMARY KEY,
     judge_id       INT NOT NULL REFERENCES users(id),
@@ -29,7 +25,6 @@ CREATE TABLE IF NOT EXISTS scores (
     submitted_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Seed users with placeholder passwords (visit /seed_passwords.php once after deploy)
 INSERT INTO users (username, password, role) VALUES
 ('judge1', 'placeholder', 'judge'),
 ('judge2', 'placeholder', 'judge'),

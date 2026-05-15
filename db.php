@@ -1,5 +1,4 @@
 <?php
-// db.php — connects to PostgreSQL using Render's DATABASE_URL environment variable
 
 $url = getenv('DATABASE_URL');
 
@@ -7,7 +6,6 @@ if (!$url) {
     die("<p style='color:red;font-family:sans-serif'>DATABASE_URL environment variable is not set. Make sure your Render PostgreSQL database is linked to this service.</p>");
 }
 
-// Parse the URL: postgres://user:password@host:port/dbname
 $parts = parse_url($url);
 
 $host   = $parts['host'];
