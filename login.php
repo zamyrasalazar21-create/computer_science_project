@@ -27,6 +27,7 @@ if ($user && password_verify($password, $user['password'])) {
     }
     exit();
 } else {
-    echo "Invalid username or password.";
+    header("Location: index.php?error=1");
+exit();
 }
 ?>
