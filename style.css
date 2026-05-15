@@ -1,0 +1,215 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.rubric-wrapper {
+    width: 620px;
+    margin-left: 0;
+    margin-top: 0;
+}
+
+.rubric-title {
+    width: 620px;
+    height: 32px;
+    background-color: #cfcfcf;
+    text-align: center;
+    line-height: 32px;
+    font-size: 15px;
+    font-weight: bold;
+    border-bottom: 3px solid white;
+}
+
+.rubric-table {
+    width: 620px;
+    border-collapse: collapse;
+    background-color: #cfcfcf;
+    table-layout: fixed;
+}
+
+.rubric-table th,
+.rubric-table td {
+    border: 2px solid white;
+    background-color: #cfcfcf;
+    padding: 0;
+    vertical-align: top;
+}
+
+.info-row td {
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 6px 0 6px;
+    vertical-align: top;
+}
+
+.info-row .left-info {
+    width: 430px;
+}
+
+.info-row .right-info {
+    width: 190px;
+}
+
+.header-row th {
+    height: 32px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 6px;
+    vertical-align: middle;
+}
+
+.header-row th:nth-child(1) {
+    width: 240px;
+}
+
+.header-row th:nth-child(2) {
+    width: 190px;
+    text-align: left;
+}
+
+.header-row th:nth-child(3) {
+    width: 190px;
+    text-align: left;
+}
+
+.score-row td {
+    height: 55px;
+    vertical-align: middle;
+}
+
+.tall-row td {
+    height: 85px;
+}
+
+.criteria-text {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.5;
+    padding-left: 6px !important;
+    padding-top: 4px !important;
+    vertical-align: middle !important;
+}
+
+.score-input {
+    width: 100%;
+    height: 100%;
+    min-height: 51px;
+    border: none;
+    background-color: #cfcfcf;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    display: block;
+    box-sizing: border-box;
+}
+
+.score-input:focus {
+    background-color: #dddddd;
+}
+
+.score-input:disabled {
+    background-color: #a6a6a6;
+    cursor: not-allowed;
+}
+
+.line-input {
+    border: none;
+    outline: none;
+    background-color: #cfcfcf;
+    font-size: 13px;
+    width: 260px;
+}
+
+.short-input {
+    width: 80px;
+}
+
+.title-input {
+    width: 440px;
+}
+
+.total-row td {
+    height: 32px;
+    font-size: 14px;
+    font-weight: bold;
+    vertical-align: middle;
+    padding: 0;
+}
+
+.total-label {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#totalDisplay {
+    display: block;
+    text-align: center;
+    line-height: 32px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.judge-row td {
+    height: 48px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 6px;
+    vertical-align: top;
+}
+
+
+.comments-row td {
+    height: 70px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 6px;
+    vertical-align: top;
+}
+
+.comments-box {
+    width: 600px;
+    height: 40px;
+    border: none;
+    background-color: #cfcfcf;
+    outline: none;
+    resize: none;
+    font-size: 13px;
+    margin-top: 4px;
+    display: block;
+}
+
+.submit-button {
+    margin-top: 12px;
+    margin-left: 0;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: #cfcfcf;
+    border: 2px solid #777777;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #bbbbbb;
+}
+
+.logout-link {
+    display: inline-block;
+    margin-top: 8px;
+    color: blue;
+    font-size: 13px;
+}
