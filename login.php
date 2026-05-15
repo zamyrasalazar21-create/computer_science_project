@@ -2,22 +2,22 @@
 session_start();
 include "db.php";
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header("Location: index.php");
+    exit();
+}
 
-$sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ss", $username, $password);
-$stmt->execute();
+$username = trim($_POST['username']);
+$password = trim($_POST['password']);
 
-$result = $stmt->get_result();
+$stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+$stmt->execute([$username]);
+$user = $stmt->fetch();
 
-if ($result->num_rows === 1) {
-    $user = $result->fetch_assoc();
-
-    $_SESSION['user_id'] = $user['id'];
+if ($user && password_verify($password, $user['password'])) {
+    $_SESSION['user_id']  = $user['id'];
     $_SESSION['username'] = $user['username'];
-    $_SESSION['role'] = $user['role'];
+    $_SESSION['role']     = $user['role'];
     $_SESSION['full_name'] = $user['full_name'];
 
     if ($user['role'] === 'admin') {
