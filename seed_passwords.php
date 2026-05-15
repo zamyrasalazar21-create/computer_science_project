@@ -2,11 +2,11 @@
 require 'db.php';
 
 $credentials = [
-    'judge1' => 'Judge1Pass',
-    'judge2' => 'Judge2Pass',
-    'judge3' => 'Judge3Pass',
-    'judge4' => 'Judge4Pass',
-    'admin'  => 'AdminPass',
+    'judge1' => '1234',
+    'judge2' => '1234',
+    'judge3' => '1234',
+    'judge4' => '1234',
+    'admin'  => 'admin4321',
 ];
 
 $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE username = ?");
