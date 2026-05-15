@@ -19,7 +19,16 @@ GROUP BY group_number, project_title, group_members
 ORDER BY group_number
 ";
 
-$result = $conn->query($sql);
+$result = $pdo->query($sql);
+
+$details = "
+SELECT grades.*, users.full_name 
+FROM grades 
+JOIN users ON grades.judge_id = users.id
+ORDER BY grades.submitted_at DESC
+";
+
+$detailResult = $pdo->query($details);
 ?>
 
 <!DOCTYPE html>
@@ -31,18 +40,11 @@ $result = $conn->query($sql);
 <body>
 
 <h2>Admin Dashboard</h2>
-
-<p>
-    <strong>Logged in as:</strong>
-    <?php echo $_SESSION['full_name']; ?>
-</p>
-
+<p><strong>Logged in as:</strong> <?php echo $_SESSION['full_name']; ?></p>
 <a href="logout.php">Logout</a>
-
 <hr>
 
 <h3>Group Averages</h3>
-
 <table border="1" cellpadding="10" cellspacing="0">
     <tr>
         <th>Group Number</th>
@@ -51,8 +53,7 @@ $result = $conn->query($sql);
         <th>Number of Judges</th>
         <th>Average Grade</th>
     </tr>
-
-    <?php while ($row = $result->fetch_assoc()) { ?>
+    <?php while ($row = $result->fetch()) { ?>
         <tr>
             <td><?php echo $row['group_number']; ?></td>
             <td><?php echo $row['project_title']; ?></td>
@@ -64,20 +65,7 @@ $result = $conn->query($sql);
 </table>
 
 <br>
-
 <h3>All Judge Scores</h3>
-
-<?php
-$details = "
-SELECT grades.*, users.full_name 
-FROM grades 
-JOIN users ON grades.judge_id = users.id
-ORDER BY grades.created_at DESC
-";
-
-$detailResult = $conn->query($details);
-?>
-
 <table border="1" cellpadding="10" cellspacing="0">
     <tr>
         <th>Judge</th>
@@ -87,15 +75,14 @@ $detailResult = $conn->query($details);
         <th>Comments</th>
         <th>Date</th>
     </tr>
-
-    <?php while ($row = $detailResult->fetch_assoc()) { ?>
+    <?php while ($row = $detailResult->fetch()) { ?>
         <tr>
             <td><?php echo $row['full_name']; ?></td>
             <td><?php echo $row['group_number']; ?></td>
             <td><?php echo $row['project_title']; ?></td>
             <td><?php echo $row['total']; ?></td>
             <td><?php echo $row['comments']; ?></td>
-            <td><?php echo $row['created_at']; ?></td>
+            <td><?php echo $row['submitted_at']; ?></td>
         </tr>
     <?php } ?>
 </table>
